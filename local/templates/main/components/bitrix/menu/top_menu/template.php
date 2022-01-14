@@ -16,14 +16,14 @@
 					<?php
 						foreach ($arResult as $key=>$arItem) {
 					?>
-						<li class=""><a href="<?= $arItem['LINK'] ?>"><?php echo ($key == 0) ? '<i class="bi bi-house" style="margin-right:3px;"></i>' : ''; ?><?= $arItem['TEXT'] ?></a></li>
+						<li class=""><a href="<?= $arItem['LINK'] ?>"><?= $arItem['TEXT'] ?></a></li>
 					<?php
 						}
 					?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Вход</a></li>
-                    <li><a href="#">Регистрация</a></li>
+                    <li><a href="#"><i class="bi bi-person"></i>Вход</a></li>
+                    <li><a href="#"><i class="bi bi-person-plus"></i>Регистрация</a></li>
                 </ul>
             </div>
         </div>

@@ -3,7 +3,7 @@
 use Bitrix\Main\Page\Asset;
 
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/style.css");
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/css/script.js");
+Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/scripts.js");
 CJSCore::Init();
 ?>
 <!DOCTYPE html>
