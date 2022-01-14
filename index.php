@@ -1,141 +1,92 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-	$APPLICATION->SetTitle("Кинотеатр \"Общежитие №6\"");
+	$APPLICATION->SetTitle("Кинотеатр");
 ?>
 
 <!-- MainContent -->
-<div class="container-fluid">
-        <wrapper>
-            <div id="dws-slider" class="carousel slide carousel-fade" data-ride="carousel">
-                <!--Показатели-->
-                <ol class="carousel-indicators">
-                    <li data-target="#dws-slider" data-slide-to="0" class="active"></li>
-                    <li data-target="#dws-slider" data-slide-to="1"></li>
-                </ol>        
-                <!--Обертка для слайдов-->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active"><img src="<?= SITE_TEMPLATE_PATH ?>/images/spider-man.jpg"  alt="Картинка 1">
-                        <div class="carousel-caption">
-                            <h3 class="text-uppercase">Человек-паук: Нет пути домой</h3>
-                            <p style="text-overflow: ellipsis;">Жизнь и репутация Питера Паркера оказываются под угрозой, поскольку Мистерио раскрыл всему миру тайну личности Человека-паука.
-                                 Пытаясь исправить ситуацию, Питер обращается за помощью к Стивену Стрэнджу, но вскоре всё становится намного опаснее.</p>
-                        </div>
-                    </div>
-                    <div class="item"><img src="<?= SITE_TEMPLATE_PATH ?>/images/bogatyr1.jpg"  alt="Картинка 1">
-                        <div class="carousel-caption">
-                            <h3 class="text-uppercase">Последний богатырь</h3>
-                            <p style="text-overflow: ellipsis;">Обычный парень Иван по воле случая переносится из современной Москвы в фантастическую страну Белогорье.
-                                 В этом параллельном мире живут герои русских сказок, волшебство — неотъемлемая часть быта, а спорные вопросы решаются битвой на богатырских мечах.</p>
-                        </div>
-                    </div>
-                </div>        
-                <!--Элементы управления-->
-                <a class="left carousel-control" href="#dws-slider" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#dws-slider" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </wrapper>
+<div class="container-fluid margin">
+        <?php
+            $APPLICATION->IncludeComponent("bitrix:news.list", "slider", Array(
+                "ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
+                    "ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации
+                    "AJAX_MODE" => "N",	// Включить режим AJAX
+                    "AJAX_OPTION_ADDITIONAL" => "",	// Дополнительный идентификатор
+                    "AJAX_OPTION_HISTORY" => "N",	// Включить эмуляцию навигации браузера
+                    "AJAX_OPTION_JUMP" => "N",	// Включить прокрутку к началу компонента
+                    "AJAX_OPTION_STYLE" => "Y",	// Включить подгрузку стилей
+                    "CACHE_FILTER" => "N",	// Кешировать при установленном фильтре
+                    "CACHE_GROUPS" => "Y",	// Учитывать права доступа
+                    "CACHE_TIME" => "36000000",	// Время кеширования (сек.)
+                    "CACHE_TYPE" => "A",	// Тип кеширования
+                    "CHECK_DATES" => "Y",	// Показывать только активные на данный момент элементы
+                    "DETAIL_URL" => "",	// URL страницы детального просмотра (по умолчанию - из настроек инфоблока)
+                    "DISPLAY_BOTTOM_PAGER" => "Y",	// Выводить под списком
+                    "DISPLAY_DATE" => "Y",	// Выводить дату элемента
+                    "DISPLAY_NAME" => "Y",	// Выводить название элемента
+                    "DISPLAY_PICTURE" => "Y",	// Выводить изображение для анонса
+                    "DISPLAY_PREVIEW_TEXT" => "Y",	// Выводить текст анонса
+                    "DISPLAY_TOP_PAGER" => "N",	// Выводить над списком
+                    "FIELD_CODE" => array(	// Поля
+                        0 => "",
+                        1 => "",
+                    ),
+                    "FILTER_NAME" => "",	// Фильтр
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",	// Скрывать ссылку, если нет детального описания
+                    "IBLOCK_ID" => "9",	// Код информационного блока
+                    "IBLOCK_TYPE" => "-",	// Тип информационного блока (используется только для проверки)
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",	// Включать инфоблок в цепочку навигации
+                    "INCLUDE_SUBSECTIONS" => "N",	// Показывать элементы подразделов раздела
+                    "MESSAGE_404" => "",	// Сообщение для показа (по умолчанию из компонента)
+                    "NEWS_COUNT" => "20",	// Количество новостей на странице
+                    "PAGER_BASE_LINK_ENABLE" => "N",	// Включить обработку ссылок
+                    "PAGER_DESC_NUMBERING" => "N",	// Использовать обратную навигацию
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",	// Время кеширования страниц для обратной навигации
+                    "PAGER_SHOW_ALL" => "N",	// Показывать ссылку "Все"
+                    "PAGER_SHOW_ALWAYS" => "N",	// Выводить всегда
+                    "PAGER_TEMPLATE" => ".default",	// Шаблон постраничной навигации
+                    "PAGER_TITLE" => "Новости",	// Название категорий
+                    "PARENT_SECTION" => "",	// ID раздела
+                    "PARENT_SECTION_CODE" => "",	// Код раздела
+                    "PREVIEW_TRUNCATE_LEN" => "",	// Максимальная длина анонса для вывода (только для типа текст)
+                    "PROPERTY_CODE" => array(	// Свойства
+                        0 => "SLAIDER_FILTER",
+                        1 => "",
+                    ),
+                    "SET_BROWSER_TITLE" => "N",	// Устанавливать заголовок окна браузера
+                    "SET_LAST_MODIFIED" => "N",	// Устанавливать в заголовках ответа время модификации страницы
+                    "SET_META_DESCRIPTION" => "N",	// Устанавливать описание страницы
+                    "SET_META_KEYWORDS" => "N",	// Устанавливать ключевые слова страницы
+                    "SET_STATUS_404" => "N",	// Устанавливать статус 404
+                    "SET_TITLE" => "N",	// Устанавливать заголовок страницы
+                    "SHOW_404" => "N",	// Показ специальной страницы
+                    "SORT_BY1" => "ACTIVE_FROM",	// Поле для первой сортировки новостей
+                    "SORT_BY2" => "SORT",	// Поле для второй сортировки новостей
+                    "SORT_ORDER1" => "DESC",	// Направление для первой сортировки новостей
+                    "SORT_ORDER2" => "ASC",	// Направление для второй сортировки новостей
+                    "STRICT_SECTION_CHECK" => "N",	// Строгая проверка раздела для показа списка
+                ),
+                false
+            );
+        ?>
         <div>
-            <div class="container-filtr">
-                <form action="" id='filtr' class="filtr">
-                    <select name="" id="stateFilms">
-                        <option value="">Уже в кино</option>
-                        <option value="">Скоро в кино</option>
-                    </select>                
-                    <input type="date" id="date" min="">
-                    <select name="" id="genre ">
-                        <option value="">Жанр</option>
-                    </select>
-                    <a class="reset" id="reset">Сбросить</a>
-                </form>
-            </div>
+            <?php
+                $APPLICATION->IncludeComponent(
+                    "custom:filtres",
+                    "main",
+                    [],
+                    false
+                );
+            ?>
             <h2>Фильмы на сегодня:</h2>
             <div class="container-films">
-                <a href="" class="film-card">
-                    <div class="film-title-image">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/images/cover.jpg" alt="">
-                    </div>
-                    <p class="film-description">
-                        <span class="film-title">Зверопой 2Зверопой 2Зверопой 2Зверопой </span>
-                    </p>
-                </a>
-                <a  href="" class="film-card">
-                    <div class="film-title-image">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/images/bogatyr1.jpg" alt="">
-                    </div>
-                    <p class="film-description">
-                        <span class="film-title">Зверопой 2</span>
-                    </p>
-                </a>
-                <a href="" class="film-card">
-                    <div class="film-title-image">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/images/cover.jpg" alt="">
-                    </div>
-                    <p class="film-description">
-                        <span class="film-title">Зверопой 2Зверопой 2Зверопой 2Зверопой </span>
-                    </p>
-                </a>
-                <a  href="" class="film-card">
-                    <div class="film-title-image">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/images/bogatyr1.jpg" alt="">
-                    </div>
-                    <p class="film-description">
-                        <span class="film-title">Зверопой 2</span>
-                    </p>
-                </a>
-                <a href="" class="film-card">
-                    <div class="film-title-image">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/images/cover.jpg" alt="">
-                    </div>
-                    <p class="film-description">
-                        <span class="film-title">Зверопой 2Зверопой 2Зверопой 2Зверопой </span>
-                    </p>
-                </a>
-                <a  href="" class="film-card">
-                    <div class="film-title-image">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/images/bogatyr1.jpg" alt="">
-                    </div>
-                    <p class="film-description">
-                        <span class="film-title">Зверопой 2</span>
-                    </p>
-                </a>
-                <a href="" class="film-card">
-                    <div class="film-title-image">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/images/cover.jpg" alt="">
-                    </div>
-                    <p class="film-description">
-                        <span class="film-title">Зверопой 2Зверопой 2Зверопой 2Зверопой </span>
-                    </p>
-                </a>
-                <a  href="" class="film-card">
-                    <div class="film-title-image">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/images/bogatyr1.jpg" alt="">
-                    </div>
-                    <p class="film-description">
-                        <span class="film-title">Зверопой 2</span>
-                    </p>
-                </a>
-                <a href="" class="film-card">
-                    <div class="film-title-image">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/images/cover.jpg" alt="">
-                    </div>
-                    <p class="film-description">
-                        <span class="film-title">Зверопой 2Зверопой 2Зверопой 2Зверопой </span>
-                    </p>
-                </a>
-                <a  href="" class="film-card">
-                    <div class="film-title-image">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/images/bogatyr1.jpg" alt="">
-                    </div>
-                    <p class="film-description">
-                        <span class="film-title">Зверопой 2</span>
-                    </p>
-                </a>
+                <?php
+                    $APPLICATION->IncludeComponent(
+                        "custom:films",
+                        "main",
+                        [],
+                        false
+                    );
+                ?>
             </div>
         </div>
     </div>
