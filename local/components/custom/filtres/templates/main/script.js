@@ -59,6 +59,7 @@ $(document).ready(function(){
             type: 'POST',
             data: data,
             success: function(response){
+                console.log(response);
                 $('.container-films').html(response);
             },
             error: function(answer){
@@ -68,7 +69,7 @@ $(document).ready(function(){
     });
 
     $('#reset').click(function(){
-        let genre = 'showAll';
+        let genre = '-1';
 
         $.ajax({
             url: ajaxUrl,

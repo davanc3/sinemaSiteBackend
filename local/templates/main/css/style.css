@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,700&display=swap&subset=cyrillic');
+
+html{
+    position: relative;
+    min-height: 100%;
+}
 body{    
     background: -webkit-linear-gradient(0deg, rgb(218,219,219), rgb(242,243,243)) !important;
     background: -moz-linear-gradient(0deg, rgb(218,219,219), rgb(242,243,243)) !important;
@@ -7,14 +12,19 @@ body{
     font-family: 'Fira Sans', sans-serif !important;
     font-weight: 200 !important;
     white-space: normal !important;
+    margin-bottom: 50px !important;
+    margin-top: 50px !important;
 }
 a {
-  text-decoration: none !important;
+    cursor: pointer;
+    text-decoration: none !important;
 }
 
-
-.container-fluid.margin {
-    margin-top: 50px !important;
+li {
+    list-style-type: none; 
+   }
+ul {
+padding-left: 0;
 }
 
 @media screen and (min-width: 1200px) {
@@ -23,12 +33,20 @@ a {
         margin-right: 140px !important;
     }
 }
+footer {
+    width: 100%;
+    height: 50px;
+    position:absolute;
+    bottom:0;
+    background-color: rgb(242,243,243);
+}
+
+
 /* Меню*/
 .navbar {
     margin-bottom: 0 !important;
 }
 .navbar-default{
-    font-family: 'Roboto', sans-serif !important;
     font-size: 18px !important;
 }
 .navbar-default .navbar-nav>li>a:hover{
@@ -42,7 +60,45 @@ a {
     padding: 0 10px 0 0;
     border-right: 1px solid rgba(119,119,123, .5);
 }
-
+/* Регистрация */
+.error-message {
+    display: none;
+    color: red;
+}
+.form-registration-login {
+    margin-top: 20px;
+}
+.form-registration-login .warp-input{
+    display: flex;
+    border: black solid 1px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.form-registration-login .warp-input .bi {
+    font-size: 25px;
+    display: flex !important;
+    align-items: center;
+    padding-right: 10px;
+    border-right: rgba(119,119,123, .5) solid 1px;
+}
+.form-registration-login .warp-input input{
+    width: 250px;
+    padding: 10px;
+    border: none !important;
+}
+.form-registration-login .warp-input input:focus-visible {
+    outline: none !important;
+}
+.form-registration-login input[type=submit]{
+    padding: 10px;
+    margin-top: 20px;
+    background-color: green;
+    color: white;
+    border: none !important;
+    border-radius: 10px;
+    min-width: 150px;
+}
 /* Сладер на главной страницы с фильмами */
 .carousel-inner h3 {
     background-color: rgba(20, 49, 68, .7);
@@ -68,49 +124,51 @@ a {
 }
 
 /* Контейнер фильтр на главной*/
-.container-filtr{
+.container-info .container-filtr{
     margin-top: 30px;
     background-color: white;
     border-radius: 10px;
 }
-.container-filtr .filtr{
+.container-info .container-filtr .filtr{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;    
     border-radius: 10px;
     padding: 20px;
 }
-.container-filtr input[type="date"], select, .reset {
+.container-info .container-filtr input[type="date"], .container-filtr select, .container-info .reset {
     width: 250px;
     height: 50px;
     padding-left: 30px;
 }
-.container-filtr input[type="date"], .select, .reset {
+.container-info .container-filtr input[type="date"], .container-info .select, .container-info .reset {
+    
     margin-left: 20px;
 }
-.container-filtr .info-title {
+.container-info .container-filtr .info-title {
     margin-top: 10px !important;
 }
-.container-filtr .reset{
+.container-info .container-filtr .reset{
     padding: 15px;
     color: black;
     cursor: pointer;
     text-align: center;
 }
 @media screen and (max-width: 879px) {
-    .container-filtr .filtr{
+    .container-info .container-filtr .filtr{
         flex-wrap: nowrap;
         flex-flow: column;
         align-items: center;
+        justify-content: center;
     }
-    .container-filtr input[type="date"], .select, .reset {
-        margin-left: 0;
-        margin-top: 15px;
+    .container-info .container-filtr input[type="date"], .container-info .select, .reset {
+        margin-left: 0 !important;
+        margin-top: 15px ;
     }
 }
 
-/* Контейнер с фильмами на главной */
-.container-films{
+/* Контейнер с фильмами*/
+.container-info .container-films{
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 
@@ -119,7 +177,7 @@ a {
     border-radius: 10px;
     padding: 50px;
 }
-.container-films > .film-card{
+.container-info .container-films > .film-card{
     height: auto;
     margin: 0 15px;
     width: 213px;
@@ -129,36 +187,36 @@ a {
     
     
 }
-.container-films .film-title-image{    
+.container-info .container-films .film-title-image{    
     width: 100%;
     height: 320px;
     border-radius: 10px 10px 0 0;
 }
-.container-films .film-title-image > img{
+.container-info .container-films .film-title-image > img{
     width: 100%;
     height: 100%;
     object-fit: cover;    
     border-radius: 10px 10px 0 0;
 }
-.container-films .film-title{
+.container-info .container-films .film-title{
     font-size: 18px;
     word-wrap: break-word;
     padding: 5px;
 
 }
-.container-films .film-description {
+.container-info .container-films .film-description {
     padding: 10px;
     background-color: white;    
     border-radius:  0 0 10px 10px;
 }
-.container-info .pagination {
+ .pagination {
     display: flex;
     align-items: center;    
     align-content: center;
     justify-content:center;
 }
 
-.container-info .pagination a {
+ .pagination a {
     color: black;
     float: left;
     padding: 8px 16px;
@@ -166,23 +224,18 @@ a {
     transition: background-color .3s;
 }
 
-.container-info .pagination a.active {
+.pagination a.active {
     background-color: #4CAF50;
     color: white;
 }
 @media screen and (max-width: 515px) {
-    .container-films{
+    .container-info .container-films{
         justify-content: center;
         padding: 0;
     }
 }
 
-/* footer */
-.footer {
-    height:50px ;
-    width: 100%;
-    background-color: #F8F8F8;
-}
+
 
 /* film.html */
 .container-film{
@@ -200,14 +253,13 @@ a {
     text-align: center;
 }
 .container-film .container-image > .title-image{
-    width: 100%;
-    max-width: 450px;
+    width: 350px;    
     height: 452;    
 }
 .container-film .container-image > .title-image > img{
     width: 100%;
     height: 100%;
-    object-fit: cover;    
+    object-fit: cover;
     border-radius: 10px;
 }
 .container-film .container-image > .trailer {
@@ -215,7 +267,7 @@ a {
     height: 200px;
     margin-top: 10px;
 }
-.container-film .container-image > .trailer > iframe {
+.container-film .container-image > .trailer > video {
     width: 100%;
     height: 100%;
 }
@@ -223,6 +275,9 @@ a {
     .container-film{
         align-items: center;
         flex-flow: column;
+    }
+    .container-film .container-image > .title-image{
+        width:200px;
     }
 }
 /* Контейнер со всей информацией о фильме*/
@@ -291,13 +346,14 @@ a {
 }
 /* popup */
 .overlay {
+    display: none;
     position: fixed;
     width: 100%;
     height: 100vh;
     top:0;
     background-color: rgba(0,0,0,.4);
     left: 0;
-    display: none;
+    z-index: 1050;
 }
 .popup{
     position:absolute;
@@ -333,14 +389,38 @@ a {
 		height: 100vh;
 	}
 }
+/* Оформеление алерта */
+.alert{    
+    font-size: 36px !important;
+    margin-bottom: 0px !important;
+}
+.alert i{    
+    padding-right: 10px;
+}
+.alert a{    
+    font-size: 24px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.alert .alert-ok {
+    margin-top: 15px;
+}
 /* Оформление заказа биллета */
 .booking-form {
     margin-top: 20px;
 }
-.booking-form input[type=date], input[type=time]{
+.booking-form input[type=date], .booking-form select{
     padding: 10px;
     text-align: center;
     margin-right: 10px;
+    height: 100%;
+}
+.booking-form .select-seance {
+    display: flex;
+    justify-content: center;
 }
 .booking-form input[type=submit] {
     background-color: #4CAF50;
@@ -389,4 +469,293 @@ a {
     background-color:darkgrey;
     cursor: default;
     color: white;    
+}
+.booking-form .order {
+    width: auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* schedule.html */
+.container-schedule{
+    display: flex;
+}
+@media screen and (max-width: 879px) {
+    .container-schedule{
+        flex-flow: column;
+    }
+    .container-schedule .container-filtr{
+        position: relative !important;
+        z-index: 0 !important;
+    }
+    .container-schedule .container-films {        
+        margin-left: 0 !important;
+    }
+}
+
+/* фильтр */
+.container-schedule .container-filtr{
+    position: fixed;
+    z-index: 101;
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 10px;    
+    padding: 20px;
+    height: auto;
+}
+.container-schedule .container-filtr .filtr {
+    display: flex;
+    flex-flow: column;
+    align-items: center;   
+    border-radius: 10px;
+}
+.container-schedule .container-filtr input[type="date"], .container-schedule select, .container-schedule .reset {
+    width: 250px;
+    height: 50px;
+    padding-left: 30px;
+}
+.container-schedule .container-filtr input[type="date"], .container-schedule .select, .container-schedule  .reset {
+    margin-top: 20px;
+}
+.container-schedule .container-filtr .reset{
+    padding: 15px;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+}
+/* Карточка фильма */
+.container-schedule .container-films {    
+    margin-top: 30px;
+    margin-left: 310px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-self: center;    
+}
+
+.container-schedule .container-films > .film-card{  
+    margin-bottom: 20px;
+    width: 100%;    
+    height: 520px;
+    display: flex;
+    color: black !important;    
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    
+}
+.container-schedule .container-films .film-title-image{    
+    width: 100%;
+    max-width: 320px;
+    height: 100%;
+    margin-right: 20px;
+}
+.container-schedule .container-films .film-title-image > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    
+    border-radius: 10px;
+}
+.container-schedule .film-description{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+.container-schedule .description {
+    padding-top: 20px;
+    border-top: 1px solid rgba(119,119,123, .5);    
+    font-family: 'Roboto', sans-serif !important; 
+    font-size: 18px;
+    text-indent: 50px;
+    overflow:hidden;
+}
+.container-schedule .film-description .film-title {    
+    text-align: center;    
+}
+.container-schedule  .pagination {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* abautus.html */
+.container-aboutus {
+    margin-top: 20px;
+}
+.container-aboutus .title {
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+.container-aboutus .description{
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif !important; 
+}
+.container-aboutus h2{
+    text-align: center;
+}
+.container-aboutus p{
+    text-indent: 50px;
+}
+.container-aboutus .find-us{
+    margin-top: 20px;
+    margin-bottom: 20px;    
+}
+.container-aboutus .find-us h2{
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+.container-aboutus .find-us .container-info-about{
+    display:flex;    
+    margin-top: 20px!important;
+}
+.container-aboutus .find-us .map{
+    width: 100%;
+    padding: 20px;
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+.container-aboutus .find-us .find-us-info{
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 10px;    
+    font-family: 'Roboto', sans-serif !important; 
+}
+.container-aboutus .find-us table {
+    margin-top: 25px;
+}
+.container-aboutus .find-us .warp-td{
+    padding: 10px;
+}
+.container-aboutus .find-us td:nth-child(1) {
+    padding-right: 20px;
+    opacity: 0.5;
+    vertical-align: top;
+}
+
+@media screen and (max-width: 600px) {
+    .container-aboutus .find-us .container-info-about{
+        flex-flow: column;  
+    }
+    .container-aboutus .find-us .map{
+        margin-bottom: 20px;
+    }
+}
+/* profile.html */
+.container-profile {
+    display: flex;
+    margin-top: 20px;
+}
+.container-profile .container-settings {
+    background-color: white;  
+    border-radius: 10px;
+    margin-right: 20px;
+    width: 300px;    
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    font-size: 18px;
+}
+.container-profile .container-settings a{
+    padding: 10px;
+}
+
+.container-profile .container-settings li{
+    margin-top: 10px;
+}
+
+.container-profile .container-settings i{
+    margin-right: 10px;
+}
+.container-profile .container-info-profile {
+    background-color: white;  
+    border-radius: 10px;    
+    width: 100%;
+    padding: 30px 100px;
+}
+.container-profile .container-info-profile .settings{
+    display: none;
+    flex-flow: column;
+    justify-content: center;
+}
+.container-profile .container-info-profile .setting-items{
+    
+    font-family: 'Roboto', sans-serif !important;
+    margin-top: 20px;
+}
+.container-profile .container-info-profile .setting-item{
+    border-top: 1px solid rgba(119,119,123, .5); 
+    padding: 10px 0;
+    font-size: 18px;
+}
+.container-profile .container-info-profile .setting-line{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.container-profile .container-info-profile .setting-item form{
+    display: none;
+    flex-flow: column;
+    justify-content: start;    
+    margin-top: 10px;
+}
+.container-profile .container-info-profile h5 {
+    opacity: 0.5;
+    cursor: default;
+    width: 150px;
+}
+.container-profile .container-info-profile input {
+    width: 200px;
+    padding: 5px;
+}
+.container-profile .container-info-profile .button-form{
+    margin: 10px auto;
+}
+.container-profile .container-info-profile .button-form a{
+    padding: 5px;
+}
+
+.form-change span {    
+    font-family: 'Roboto', sans-serif !important;
+    opacity: 0.5;
+    font-size: 14px;
+    margin-right: 10px;
+}
+@media screen and (max-width: 768px) {
+    .container-profile {
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .container-profile .container-info-profile{        
+        padding: 20px;
+    }
+    .container-profile .container-info-profile .setting-item form{
+        justify-content: center;
+        align-items: center;
+    }
+    .container-profile .container-settings{
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+    .container-profile .container-info-profile .setting-line{
+        flex-flow: column;
+    }
+    .container-profile .container-info-profile .setting-item{
+        margin-bottom: 20px;
+    }
 }

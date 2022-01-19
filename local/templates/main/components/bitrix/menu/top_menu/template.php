@@ -1,7 +1,8 @@
-<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); ?>
 
-<?if (!empty($arResult)) {?>
-	<nav class="navbar navbar-fixed-top navbar-default" <?php if ($USER->GetID() == 1) echo ('style="position: relative;"'); ?>>
+<?php
+if (!empty($arResult)) {?>
+	<nav class="navbar navbar-fixed-top navbar-default">
         <div class="container-fluid">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#header-menu">
                 <span class="icon-bar"></span>
@@ -9,7 +10,7 @@
                 <span class="icon-bar"></span> 
             </button>
             <div class="navbar-header">
-                <a href="#" class="navbar-brand"><?php $APPLICATION->ShowTitle(); ?></a>                
+                <a href="#" class="navbar-brand">Кинотеатр</a>                
             </div>
             <div class="collapse navbar-collapse" id="header-menu">
                 <ul class="nav navbar-nav">
@@ -22,8 +23,9 @@
 					?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><i class="bi bi-person"></i>Вход</a></li>
-                    <li><a href="#"><i class="bi bi-person-plus"></i>Регистрация</a></li>
+                    <li <?= $USER->IsAuthorized() ? '' : 'style="display: none"' ?>><a href="/profile/"><i class="bi bi-person"></i>Профиль</a></li>
+                    <li <?= $USER->IsAuthorized() ? 'style="display: none"' : '' ?>><a id="login"><i class="bi bi-person"></i>Вход</a></li>
+                    <li <?= $USER->IsAuthorized() ? 'style="display: none"' : '' ?>><a id="registration"><i class="bi bi-person-plus"></i>Регистрация</a></li>
                 </ul>
             </div>
         </div>

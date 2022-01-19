@@ -41,14 +41,14 @@ class FilmsHelper
             'ID',
             'NAME',
             'CODE',
-            'PREVIEW_PICTURE'
+            'DETAIL_PICTURE'
         ];
 
         $rsResult = \CIBlockElement::getList([], $arFilter, false, [], $arSelect);
 
         while ($arResult = $rsResult->fetch()) {
             $resultArray['ITEMS'][$arResult['ID']] = $arResult;
-            $resultArray['ITEMS'][$arResult['ID']]['PREVIEW_PICTURE'] = \CFile::getPath($arResult['PREVIEW_PICTURE']);
+            $resultArray['ITEMS'][$arResult['ID']]['DETAIL_PICTURE'] = \CFile::getPath($arResult['DETAIL_PICTURE']);
         }
 
         return $resultArray;
@@ -105,4 +105,75 @@ class FilmsHelper
 
         return $genreName;
     } 
+    /**
+     * Получение названия жанра фильма по его id
+     * 
+     * @param int
+     * @return string
+     */
+    public static function getSeanceDateById(int $seanceId): string
+    {
+        $IBlockId = Utils::getIblockIdByCode('session');
+
+        $arFilter = [
+            'IBLOCK_ID' => $IBlockId,
+            'ID' => $seanceId
+        ];
+
+        $arSelect = [
+            'PROPERTY_DATE'
+        ];
+
+        $rsResult = \CIBlockElement::getList([], $arFilter, false, [], $arSelect);
+
+        return FilmsHelper::translateMonthNames(date('j F G:i', strtotime($rsResult->fetch()['PROPERTY_DATE_VALUE'])));
+    } 
+    /**
+     * Получение названия жанра фильма по его id
+     * 
+     * @param int
+     * @return array
+     */
+    public static function getFilmNameAndPriceById(int $filmId): array
+    {
+        $IBlockId = Utils::getIblockIdByCode('films');
+
+        $arFilter = [
+            'IBLOCK_ID' => $IBlockId,
+            'ID' => $filmId
+        ];
+
+        $arSelect = [
+            'NAME',
+            'PROPERTY_PRICE'
+        ];
+
+        $rsResult = \CIBlockElement::getList([], $arFilter, false, [], $arSelect);
+
+        $element = $rsResult->fetch();
+        
+        $resultArray['NAME'] = $element['NAME'];
+        $resultArray['PRICE'] = $element['PROPERTY_PRICE_VALUE'];
+
+        return $resultArray;
+    } 
+
+    public static function translateMonthNames($str) {
+        $replace = [
+            'January' => 'Января',
+            'February' => 'Февраля',
+            'March' => 'Марта',
+            'April' => 'Апреля',
+            'May' => 'Мая',
+            'June' => 'Июня',
+            'July' => 'Июля',
+            'August' => 'Августа',
+            'September' => 'Сентября',
+            'October' => 'Октября',
+            'November' => 'Ноября',
+            'December' => 'Декабря'
+        ];
+    
+        return strtr($str, $replace);
+    }
 }
