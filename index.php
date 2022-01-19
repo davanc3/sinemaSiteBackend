@@ -68,7 +68,7 @@
                 false
             );
         ?>
-        <div>
+        <div class="container-info">
             <?php
                 $APPLICATION->IncludeComponent(
                     "custom:filtres",
@@ -77,7 +77,7 @@
                     false
                 );
             ?>
-            <h2>Фильмы на сегодня:</h2>
+            <h2 id="info-title">Фильмы на сегодня:</h2>
             <div class="container-films">
                 <?php
                     $APPLICATION->IncludeComponent(

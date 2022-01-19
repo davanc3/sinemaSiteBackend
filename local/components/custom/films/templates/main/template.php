@@ -9,9 +9,7 @@
         }
         
     }
-    // use Cinema\Settings\Utils;
-
-    // Utils::printArray($arResult);
+    // dump($arResult);
 ?>
 
     <?php
@@ -19,7 +17,7 @@
     ?>
         <a href="/timetable/<?= $arItem['CODE'] ?>/" class="film-card">
             <div class="film-title-image">
-                <img src="<?= $arItem['PREVIEW_PICTURE'] ?>" alt="">
+                <img src="<?= $arItem['DETAIL_PICTURE'] ?>" alt="">
             </div>
             <p class="film-description">
                 <span class="film-title"><?= $arItem['NAME'] ?></span>
@@ -29,6 +27,6 @@
         } 
     ?>
 <?php
-    if ($arResult['GENRE_FILTER']) {
-        die;
-    }
+    // if ($arResult['GENRE_FILTER']) {
+    //     die;
+    // }
